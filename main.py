@@ -4,15 +4,21 @@ app = Flask(__name__)
 
 @app.route("/get-user/id=<user_id>")
 def get_user(user_id):
-    #static data
+    try:
+        user_id = int(user_id)  # Convert to integer
+    except ValueError:
+        return jsonify({"error": "Invalid user_id"}), 400  # Handle non-numeric IDs
+
     user_data = {
-        "user_id": user_id,
+        "user_id": 10,
         "name" : "Yosri Jemai",
         "email" : "yosrii.jemaiii@gmail.com"
     }
 
-    # returning dictionary in json format
-    return jsonify(user_data), 200
+    if user_id == user_data["user_id"]:
+        return jsonify(user_data), 200
+    else:
+        return jsonify({"error": "Unauthorized"}), 401
 
 
 if __name__ == '__main__':
