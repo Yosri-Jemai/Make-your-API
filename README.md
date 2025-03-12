@@ -10,3 +10,6 @@
 
 ![GET Result](media/get_result.png)
 
+### Step 3: test API with postman
+
+![Postman](media/Postman_test.png)
